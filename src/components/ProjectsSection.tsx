@@ -17,6 +17,15 @@ const dadosProjetos = [
   },
   {
     id: 2,
+    titulo: "Posts Generator [Gemini AI]",
+    descricao: "PostsGenerator_AI é uma API em Java + Spring Boot que gera textos e resumos para posts de forma automática, integrada à Google Gemini. Ideal para criar conteúdos criativos, otimizados e prontos para redes sociais ou blogs",
+    imagem: "/projects/postAi.jpg",
+    tag: ["Todos", "Backend"],
+    gitUrl: "https://github.com/PedroHSiqueira/PostGenerator_AI_SB",
+    previewUrl: "https://github.com/PedroHSiqueira/PostGenerator_AI_SB",
+  },
+  {
+    id: 3,
     titulo: "Chatbot Ollama 🤖",
     descricao: "Este projeto é um chatbot de IA que pode responder a perguntas simples, foi construido com Python e a LLM (Large Language Model) Llama3, que é uma versão mais leve e eficiente do GPT-3, onde você pode conversar com o chatbot e obter respostas para suas perguntas.",
     imagem: "/projects/chatbot.png",
@@ -25,7 +34,7 @@ const dadosProjetos = [
     previewUrl: "https://github.com/PedroHSiqueira/Ollama_Chatbot",
   },
   {
-    id: 3,
+    id: 4,
     titulo: "Finance Dashboard 💰",
     descricao: "Este projeto é um painel financeiro que exibe a cotação do real (BRL) em relação a diversas moedas estrangeiras. O painel é construído com Next.js e consome a API de câmbio da awesome-API para fornecer dados de câmbio em tempo real.",
     imagem: "/projects/finance.png",
@@ -34,7 +43,7 @@ const dadosProjetos = [
     previewUrl: "https://dashboard-finance-one.vercel.app/",
   },
   {
-    id: 4,
+    id: 5,
     titulo: "Reino de Yemanjá Bocci 🏖️",
     descricao: "Este projeto se trata de um freelance de um site para uma casa religiosa, onde você pode encontrar informações sobre a casa, serviços oferecidos, marcar consultas e muito mais. O site foi desenvolvido com React.js e Tailwind CSS, proporcionando uma experiência de usuário fluida e responsiva.",
     imagem: "/projects/iemanja.jpg",
@@ -43,7 +52,7 @@ const dadosProjetos = [
     previewUrl: "https://www.yalorixagenifferdeiemanja.com/",
   },
   {
-    id: 5,
+    id: 6,
     titulo: "Verbalize 💬",
     descricao: "Este projeto trata-se de um site para intercambio linguístico, onde você pode encontrar pessoas que falam a língua que você deseja aprender e que desejam aprender a língua que você fala. O site foi desenvolvido com Next.js e PostgresSQL",
     imagem: "/projects/Verbalize.png",
@@ -52,7 +61,7 @@ const dadosProjetos = [
     previewUrl: "https://verbalize-senac.vercel.app/",
   },
   {
-    id: 6,
+    id: 7,
     titulo: "Aplicativo de Clima 🌧️",
     descricao: "o projeto tem como intuito mantê-lo informado sobre as condições meteorológicas atuais e futuras, onde quer que você esteja. Com uma interface elegante e intuitiva, este aplicativo desenvolvido em Flutter oferece acesso rápido e fácil a dados precisos de clima, alimentados pela robusta API da OpenWeather",
     imagem: "/projects/weather_app.png",
