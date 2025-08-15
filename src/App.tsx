@@ -7,13 +7,13 @@ import { Tecnologies } from "./components/techStack"
 function App() {
 
   return (
-    <>
+    <div className="bg-[#16161a]">
       <Navbar />
       <About />
       <Tecnologies />
       <ProjetcSection />
       <Footer />
-    </>
+    </div>
   )
 }
 
