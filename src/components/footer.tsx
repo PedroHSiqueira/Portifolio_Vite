@@ -10,7 +10,7 @@ export default function Footer() {
         </div>
         <span className="text-white font-semibold">Pedro Siqueira Dev</span>
       </div>
-      <p className="text-blue-200 text-sm">© 2025 Pedro Henrique Siqueira. Todos os direitos Reservados</p>
+      <p className="text-blue-200 text-sm">© 2025-2026 Pedro Henrique Siqueira. Todos os direitos Reservados</p>
       <p className="text-white text-xs mt-2">
         Desenvolvido por <a href="https://www.linkedin.com/in/phasiqueira/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">Pedro Siqueira ❣️</a>
       </p>
