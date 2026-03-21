@@ -1,108 +1,90 @@
 "use client";
 
 import { useState } from "react";
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Code } from "lucide-react";
 
 export default function Navbar() {
-  const [clicado, setClicado] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const abrirNavbar = () => {
-    setClicado(!clicado);
-  };
   return (
-    <div className="fixed top-0 left-0 px-5 w-full z-50 bg-[#16161a] shadow-[0_20px_10px_-15px_rgba(0,0,0,0.1)]">
-      <header className="flex items-center justify-between py-7 text-black">
-        <div className="flex items-center gap-5">
-          <div className="w-8 h-8 bg-gradient-to-br from-purple-700 to-purple-950 rounded-full flex items-center justify-center">
+    <nav className="fixed top-0 left-0 w-full h-20 z-50 bg-[#16161a]/80 backdrop-blur-md border-b border-white/5">
+      <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 bg-gradient-to-br from-purple-600 to-purple-900 rounded-full flex items-center justify-center shadow-md">
             <Code className="w-4 h-4 text-white" />
           </div>
-          <a href="#" className="text-2xl font-black text-[#7f5af0]">
-            Pedro Siqueira<span className="text-white">.</span>
+          <a href="#" className="text-xl font-black text-[#7f5af0]">
+            Pedro <span className="text-white">.</span>
           </a>
         </div>
-        <nav className="hidden gap-10 text-xl lg:flex items-center">
-          <a
-            className="text-[#fffffe] hover:text-[#7f5af0] scroll-smooth"
-            href="#tecnologia"
-            onClick={(e) => {
-              e.preventDefault();
-              const target = document.querySelector("#tecnologia");
-              if (target) {
-                const offset = 200;
-                const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
-                window.scrollTo({ top: targetPosition, behavior: "smooth" });
-              }
-            }}
-          >
+
+        <div className="hidden lg:flex items-center gap-8">
+          <a href="#about" className="text-gray-300 hover:text-[#7f5af0] transition">
+            Sobre
+          </a>
+          <a href="#tecnologia" className="text-gray-300 hover:text-[#7f5af0] transition">
             Tecnologias
           </a>
-          <a
-            className="text-[#fffffe] hover:text-[#7f5af0]"
-            href="#projetos"
-            onClick={(e) => {
-              e.preventDefault();
-              const target = document.querySelector("#projetos");
-              if (target) {
-                const offset = 100;
-                const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
-                window.scrollTo({ top: targetPosition, behavior: "smooth" });
-              }
-            }}
-          >
+          <a href="#projetos" className="text-gray-300 hover:text-[#7f5af0] transition">
             Projetos
           </a>
-          <div className="flex items-center gap-5">
-            <a href="https://github.com/PedroHSiqueira" target="_blank" className="transition-colors duration-200 hover:text-[#7f5af0] text-[#fffffe]">
-              <FaGithub size={30} />
+
+          <div className="flex items-center gap-4 ml-4">
+            <a href="https://github.com/PedroHSiqueira" target="_blank" className="text-gray-300 hover:text-[#7f5af0] transition">
+              <FaGithub size={22} />
             </a>
-            <a href="https://www.linkedin.com/in/phasiqueira/" target="_blank" className="transition-colors duration-200 hover:text-[#7f5af0] text-[#fffffe]">
-              <FaLinkedin size={30} />
-            </a>
-          </div>
-          <div>
-            <a download={true} href="./pdf/Curriculo.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center cursor-pointer bg-gray-200 p-3 text-sm text-center font-semibold text-black border-[#fffffe] rounded-md shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:bg-[#5D3FD3] hover:text-[#fffffe]">
-              Baixar Curriculo
+            <a href="https://www.linkedin.com/in/phasiqueira/" target="_blank" className="text-gray-300 hover:text-[#7f5af0] transition">
+              <FaLinkedin size={22} />
             </a>
           </div>
-        </nav>
-        <div className="flex items-end lg:hidden">
-          <button className="inline-flex items-center justify-center rounded-b-md p-2 text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" onClick={abrirNavbar}>
-            {clicado ? (
-              <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" color="#fffffe" />
-              </svg>
-            ) : (
-              <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" color="#fffffe" />
-              </svg>
-            )}
-          </button>
+
+          <a href="./pdf/Curriculo.pdf" download className="ml-4 px-4 py-2 rounded-lg bg-[#7f5af0] hover:bg-[#6b4ae0] transition text-sm font-medium">
+            Currículo
+          </a>
         </div>
-      </header>
-      {clicado && (
-        <div className="lg:hidden">
-          <div className="space-y-1 px-2 pt-2 pb-3 sm-px-3">
-            <a href="#about" className="flex flex-col justify-center text-[#fffffe] rounded py-2 px-3 text-base font-bold hover:text-[#5D3FD3]">
-              Sobre mim
+
+        <button onClick={() => setOpen(!open)} className="lg:hidden text-white">
+          {open ? (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor">
+              <path strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor">
+              <path strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          )}
+        </button>
+      </div>
+
+      {open && (
+        <div className="lg:hidden bg-[#16161a] border-t border-white/5 px-6 pb-6">
+          <div className="flex flex-col gap-4 pt-4">
+            <a href="#about" className="text-gray-300 hover:text-[#7f5af0] transition">
+              Sobre
             </a>
-            <a href="#tech" className="flex flex-col justify-center text-[#fffffe] rounded py-2 px-3 text-base font-bold hover:text-[#5D3FD3]">
+            <a href="#tecnologia" className="text-gray-300 hover:text-[#7f5af0] transition">
               Tecnologias
             </a>
-            <a href="#projetos" className="flex flex-col justify-center text-[#fffffe] rounded py-2 px-3 text-base font-bold hover:text-[#5D3FD3]">
+            <a href="#projetos" className="text-gray-300 hover:text-[#7f5af0] transition">
               Projetos
             </a>
-            <a href="https://github.com/PedroHSiqueira" target="_blank" className="flex flex-col justify-center text-[#fffffe] rounded py-2 px-3 text-base font-bold hover:text-[#5D3FD3]">
-              Github
+
+            <div className="flex gap-4 pt-2">
+              <a href="https://github.com/PedroHSiqueira" target="_blank">
+                <FaGithub size={22} />
+              </a>
+              <a href="https://www.linkedin.com/in/phasiqueira/" target="_blank">
+                <FaLinkedin size={22} />
+              </a>
+            </div>
+
+            <a href="./pdf/Curriculo.pdf" download className="mt-4 text-center px-4 py-2 rounded-lg bg-[#7f5af0] hover:bg-[#6b4ae0] transition">
+              Baixar Currículo
             </a>
-            <a href="https://www.linkedin.com/in/phasiqueira/" target="_blank" className="flex flex-col justify-center text-[#fffffe] rounded py-2 px-3 text-base font-bold hover:text-[#5D3FD3]">
-              Linkedin
-            </a>
-            <button className="p-5 bg-gray-200 font-semibold text-black">Baixar Curriculo</button>
           </div>
         </div>
       )}
-    </div>
+    </nav>
   );
 }

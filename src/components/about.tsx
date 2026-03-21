@@ -4,71 +4,57 @@ import { motion } from "framer-motion";
 import AnimationData from "../assets/animation/phoneAnimation.json";
 
 export function About() {
-  const opcoes = {
-    animationData: AnimationData,
-    loop: true,
-  };
+  const { View } = useLottie({ animationData: AnimationData, loop: true });
 
   const cardVariants = {
-    initial: { y: 40, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 },
   };
 
-  const { View } = useLottie(opcoes);
   return (
-    <>
-      <div className="bg-[#16161a] pt-20">
-        <motion.section
-          variants={cardVariants}
-          initial="initial"
-          animate={"animate"}
-          transition={{ duration: 0.3, delay: 0.25 }}
-          viewport={{
-            margin: "-200px",
-            once: false,
-          }}
-          className="relative h-full w-full py-24 lg:px-10"
-        >
-          <div className="flex flex-col md:flex-row justify-around">
-            <div className="col-span-8 place-self-center justify-self-start text-center sm:text-left">
-              <h3 className="text-2xl font-bold text-[#fffffe]">Olá 👋!</h3>
-              <h1 className="mb-4 text-2xl font-extrabold text-[#fffffe] sm:text-3xl lg:text-5xl lg:leading-normal">
-                <span>Sou </span>
-                <TypeAnimation className="text-[#7f5af0]" sequence={["Pedro", 1000, "Dev Back-end", 1000]} wrapper="span" speed={50} repeat={Infinity} />
-              </h1>
-              <p className="mb-6 text-xs text-[#94a1b2] sm:text-lg">foco na construção de aplicações e APIs utilizando Java e Spring Boot</p>
-              <div className="flex gap-5 justify-center md:justify-normal">
-                <button
-                  className="z-40 cursor-pointer bg-[#5D3FD3] p-3 font-semibold rounded text-white shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
-                  onClick={() => {
-                    alert("Em breve");
-                  }}
-                >
-                  Contato
-                </button>
-                <a download={true} href="./pdf/Curriculo.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center cursor-pointer bg-gray-200 p-1 text-sm text-center font-semibold text-black border-[#fffffe] rounded-md shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] hover:bg-[#5D3FD3] hover:text-[#fffffe]">
-                  Baixar Curriculo
-                </a>
-              </div>
-            </div>
-            <div className="col-span-4 mt-4 flex items-center justify-center place-self-center lg:mt-0">
-              <div className="w-4/6">{View}</div>
-            </div>
+    <div className="bg-[#0f0f13] text-white pt-20">
+      <motion.section variants={cardVariants} initial="hidden" animate="visible" transition={{ duration: 0.5 }} className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
+        <div className="space-y-5 text-center md:text-left">
+          <h3 className="text-lg text-gray-400">Olá 👋</h3>
+
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
+            Sou{" "}
+            <span className="text-[#7f5af0]">
+              <TypeAnimation sequence={["Pedro", 1500, "Dev Back-end", 1500]} speed={50} repeat={Infinity} />
+            </span>
+          </h1>
+
+          <p className="text-gray-400 max-w-md mx-auto md:mx-0">Foco na construção de aplicações modernas e APIs robustas com Java e Spring Boot.</p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <button className="bg-[#7f5af0] hover:bg-[#6b4ae0] transition px-6 py-3 rounded-xl font-medium shadow-lg">Contato</button>
+
+            <a download href="./pdf/Curriculo.pdf" target="_blank" rel="noopener noreferrer" className="border border-gray-600 hover:border-[#7f5af0] hover:text-[#7f5af0] transition px-6 py-3 rounded-xl text-center">
+              Baixar Currículo
+            </a>
           </div>
-        </motion.section>
-      </div>
-      <section className="py-5 bg-[#242629]">
-        <section className="flex gap-20 m-12 lg:mx-16" id="about">
-          <img className="hidden w-1/5 rounded-3xl border-2 border-black xl:block" src={"./dev.png"} alt={"Macbook"} />
-          <div className="p-8 bg-[#16161a] rounded-3xl shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">
-            <h2 className="mb-5 text-2xl font-bold text-center text-[#fffffe]">Sobre mim</h2>
-            <p className="text-[#94a1b2]">Olá 👋! Me chamo Pedro Henrique e sou Desenvolvedor Back-end com foco na construção de aplicações e APIs utilizando Java e Spring Boot. Tenho interesse em desenvolver sistemas bem estruturados, eficientes e escaláveis.</p>
-            <br />
-            <p className="text-[#94a1b2]">Sou formado em Análise e Desenvolvimento de Sistemas, onde tive contato com fundamentos importantes da área de tecnologia, como Programação Orientada a Objetos, bancos de dados relacionais e boas práticas de desenvolvimento. Durante minha trajetória, trabalhei com tecnologias como Java, Spring Boot, SQL e Node.js, além de ferramentas como Git e Docker, desenvolvendo funcionalidades de backend e integrações entre sistemas. Busco sempre aplicar boas práticas de desenvolvimento, escrever código limpo e colaborar com equipes para criar soluções confiáveis e de fácil manutenção. Tenho interesse em continuar evoluindo na área de engenharia de software, aprofundando conhecimentos em desenvolvimento backend e arquitetura de sistemas.</p>
-            <br />
+        </div>
+
+        <div className="flex justify-center">
+          <div className="w-[250px] sm:w-[300px] md:w-[350px]">{View}</div>
+        </div>
+      </motion.section>
+
+      <section className="bg-[#18181d] py-16">
+        <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-3 gap-10 items-center">
+          <img src="./dev.png" alt="Developer" className="hidden lg:block rounded-2xl shadow-lg" />
+
+          <div className="lg:col-span-2 bg-[#111116] p-8 rounded-2xl shadow-lg space-y-5">
+            <h2 className="text-2xl font-bold text-[#7f5af0]">Sobre mim</h2>
+
+            <p className="text-gray-400 leading-relaxed">Olá! Me chamo Pedro Henrique e sou Desenvolvedor Back-end com foco na construção de APIs eficientes e escaláveis utilizando Java e Spring Boot.</p>
+
+            <p className="text-gray-400 leading-relaxed">Sou formado em Análise e Desenvolvimento de Sistemas, com experiência em Java, Spring Boot, SQL e Node.js. Também utilizo ferramentas como Git e Docker no desenvolvimento de soluções modernas.</p>
+
+            <p className="text-gray-400 leading-relaxed">Busco escrever código limpo, aplicar boas práticas e evoluir constantemente na área de engenharia de software, com foco em backend e arquitetura de sistemas.</p>
           </div>
-        </section>
+        </div>
       </section>
-    </>
+    </div>
   );
 }

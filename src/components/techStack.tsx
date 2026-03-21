@@ -1,45 +1,36 @@
 export function Tecnologies() {
   return (
-    <div>
-      <h1 className="text-center text-2xl font-bold text-[#fffffe] bg-[#242629] pb-10">Tech Stack |</h1>
-      <div id="tecnologia" className="grid grid-cols-2 gap-10 p-10 mx-20 bg-[#16161a] rounded-3xl justify-around sm:grid-cols-5 md:grid-cols-9 lg:mx-0 lg:rounded-none">
-        <div className="flex gap-y-5 flex-col justify-center items-center">
-          <img className="w-14" src={"./tecnologies/java.svg"} />
-          <p className="text-[#fffffe]">Java</p>
-        </div>
-        <div className="flex gap-y-5 flex-col justify-center items-center">
-          <img className="w-14" src={"./tecnologies/spring.svg"} />
-          <p className="text-[#fffffe]">Spring</p>
-        </div>
-        <div className="flex gap-y-5 flex-col justify-center items-center">
-          <img className="w-14" src={"./tecnologies/next.svg"} />
-          <p className="text-[#fffffe]">Next.Js</p>
-        </div>
-        <div className="flex gap-y-5 flex-col justify-center items-center">
-          <img className="w-14" src={"./tecnologies/typescript.svg"} />
-          <p className="text-[#fffffe]">Typescript</p>
-        </div>
-        <div className="flex gap-y-5 flex-col justify-center items-center">
-          <img className="w-14" src={"./tecnologies/javascript.svg"} />
-          <p className="text-[#fffffe]">Javascript</p>
-        </div>
-        <div className="flex gap-y-5 flex-col justify-center items-center">
-          <img className="w-14" src={"./tecnologies/tailwind.svg"} />
-          <p className="text-[#fffffe]">TailwindCSS</p>
-        </div>
-        <div className="flex gap-y-5 flex-col justify-center items-center">
-          <img className="w-14" src={"./tecnologies/python.svg"} />
-          <p className="text-[#fffffe]">Python</p>
-        </div>
-        <div className="flex gap-y-5 flex-col justify-center items-center">
-          <img className="w-14" src={"./tecnologies/postgresql.svg"} />
-          <p className="text-[#fffffe]">PostgreSQL</p>
-        </div>
-        <div className="flex gap-y-5 flex-col justify-center items-center">
-          <img className="w-14" src={"./tecnologies/docker.svg"} />
-          <p className="text-[#fffffe]">Docker</p>
+    <section id="tecnologia" className="bg-[#18181d] pt-24 pb-16">
+      <div className="max-w-6xl mx-auto px-6">
+        <h1 className="text-center text-2xl sm:text-3xl font-bold text-white mb-10">
+          Tech Stack 🚀
+        </h1>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
+          {[
+            { name: "Java", icon: "./tecnologies/java.svg" },
+            { name: "Spring", icon: "./tecnologies/spring.svg" },
+            { name: "Maven", icon: "./tecnologies/maven.svg" },
+            { name: "Python", icon: "./tecnologies/python.svg" },
+            { name: "Next.js", icon: "./tecnologies/next.svg" },
+            { name: "Typescript", icon: "./tecnologies/typescript.svg" },
+            { name: "Javascript", icon: "./tecnologies/javascript.svg" },
+            { name: "TailwindCSS", icon: "./tecnologies/tailwind.svg" },
+            { name: "PostgreSQL", icon: "./tecnologies/postgresql.svg" },
+            { name: "Redis", icon: "./tecnologies/redis.svg" },
+            { name: "Swagger", icon: "./tecnologies/swagger.svg" },
+            { name: "Docker", icon: "./tecnologies/docker.svg" },
+          ].map((tech) => (
+            <div
+              key={tech.name}
+              className="flex flex-col items-center gap-3 p-4 rounded-xl bg-[#111116] hover:bg-[#1f1f25] transition shadow-md"
+            >
+              <img className="w-12" src={tech.icon} alt={tech.name} />
+              <p className="text-sm text-gray-300">{tech.name}</p>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

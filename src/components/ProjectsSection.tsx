@@ -1,11 +1,10 @@
 "use client";
-import React, { useState, useRef } from "react";
+import { useState, useRef, type SetStateAction } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 import { motion, useInView } from "framer-motion";
 
 const dadosProjetos = [
-  
   {
     id: 1,
     titulo: "MagicFridge AI",
@@ -77,7 +76,7 @@ const dadosProjetos = [
     tag: ["Todos", "Mobile"],
     gitUrl: "https://github.com/PedroHSiqueira/Flutter_Weather_App",
     previewUrl: "https://github.com/PedroHSiqueira/Flutter_Weather_App",
-  }
+  },
 ];
 
 export default function ProjetcSection() {
@@ -85,7 +84,7 @@ export default function ProjetcSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const handleTagChange = (novaTag: React.SetStateAction<string>) => {
+  const handleTagChange = (novaTag: SetStateAction<string>) => {
     setTag(novaTag);
   };
 
@@ -97,20 +96,20 @@ export default function ProjetcSection() {
   };
 
   return (
-    <section id="projetos" className="p-10 pt-3 bg-[#242629] lg:pb-16 lg:px-16">
-      <h2 className="mt-4 mb-8 text-4xl font-bold text-center text-[#fffffe] md:mb-12">Meus Projetos</h2>
-      <div className="flex flex-row items-center justify-center gap-2 py-6 text-white">
+    <section id="projetos" className="bg-[#242629] pt-12 pb-16 px-4 sm:px-6 lg:px-16 scroll-mt-24">
+      <h2 className="mt-4 mb-8 text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#fffffe] md:mb-12">Meus Projetos 🚀</h2>
+      <div className="flex flex-wrap items-center justify-center gap-3 py-6 text-white">
         <ProjectTag onClick={handleTagChange} nome="Todos" selecionado={tag === "Todos"} />
         <ProjectTag onClick={handleTagChange} nome="Backend" selecionado={tag === "Backend"} />
         <ProjectTag onClick={handleTagChange} nome="Web" selecionado={tag === "Web"} />
         <ProjectTag onClick={handleTagChange} nome="Mobile" selecionado={tag === "Mobile"} />
       </div>
-      <ul ref={ref} className="grid gap-8 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
+
+      <ul ref={ref} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {projetosFiltrados.map((projeto, index) => (
-          <motion.li key={index} variants={cardVariants} initial="initial" animate={isInView ? "animate" : "initial"} transition={{ duration: 0.25, delay: index * 0.25 }} className="flex h-full">
-            <div className="flex flex-col flex-1 h-full">
+          <motion.li key={projeto.id} variants={cardVariants} initial="initial" animate={isInView ? "animate" : "initial"} transition={{ duration: 0.3, delay: index * 0.1 }} className="h-full">
+            <div className="flex flex-col h-full">
               <ProjectCard
-                key={projeto.id}
                 data={{
                   titulo: projeto.titulo,
                   descricao: projeto.descricao,
@@ -125,4 +124,4 @@ export default function ProjetcSection() {
       </ul>
     </section>
   );
-};
+}
