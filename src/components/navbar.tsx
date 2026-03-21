@@ -39,7 +39,7 @@ export default function Navbar() {
             </a>
           </div>
 
-          <a href="./pdf/Curriculo.pdf" download className="ml-4 px-4 py-2 rounded-lg bg-[#7f5af0] hover:bg-[#6b4ae0] transition text-sm font-medium">
+          <a href="./pdf/Curriculo.pdf" download className="ml-4 px-4 py-2 rounded-lg bg-[#7f5af0] hover:bg-[#6b4ae0] text-white transition text-sm font-medium">
             Currículo
           </a>
         </div>

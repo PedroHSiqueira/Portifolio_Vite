@@ -27,7 +27,9 @@ export function About() {
           <p className="text-gray-400 max-w-md mx-auto md:mx-0">Foco na construção de aplicações modernas e APIs robustas com Java e Spring Boot.</p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <button className="bg-[#7f5af0] hover:bg-[#6b4ae0] transition px-6 py-3 rounded-xl font-medium shadow-lg">Contato</button>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pedrohenriquedoamaralsiqueira@gmail.com&su=Contato pelo Portfólio&body=Olá Pedro, vi seu portfólio e gostaria de conversar" target="_blank" rel="noopener noreferrer" className="bg-[#7f5af0] hover:bg-[#6b4ae0] transition px-6 py-3 rounded-xl font-medium shadow-lg text-center">
+              Contato
+            </a>
 
             <a download href="./pdf/Curriculo.pdf" target="_blank" rel="noopener noreferrer" className="border border-gray-600 hover:border-[#7f5af0] hover:text-[#7f5af0] transition px-6 py-3 rounded-xl text-center">
               Baixar Currículo

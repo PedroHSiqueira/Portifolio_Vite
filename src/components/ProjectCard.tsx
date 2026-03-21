@@ -6,40 +6,53 @@ interface ProjectCardProps {
   titulo: string;
   descricao: string;
   gitUrl: string;
-  previewUrl: string;
+  previewUrl: string | null;
 }
+
 export default function ProjectCard({ data }: { data: ProjectCardProps }) {
   const { imgUrl, titulo, descricao, gitUrl, previewUrl } = data;
+
   return (
-    <div>
-      <div className="relative shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] rounded-3xl">
-        <img src={imgUrl} alt={titulo} className="rounded-t-xl" />
-        <div className="mt-3 bg-[#181818] text-white py-6 px-4 rounded-b-xl lg:min-h-[272px]">
-          <h5 className="mb-2 text-xl font-semibold">{titulo}</h5>
-          <p className="mb-5 text-[#ADB7BE] lg:min-h-[144px]">{descricao}</p>
-          <div className="flex justify-around items-center">
-            {gitUrl ? (
-              <a href={gitUrl} target="_blank" rel="noopener noreferrer" className="py-2 px-5 border-2 border-[#232946] rounded-md bg-gradient-to-r from-[#232946] to-[#3b3b3b] text-white font-semibold shadow-md transition-all duration-200 hover:scale-105 hover:from-[#3b3b3b] hover:to-[#232946] focus:outline-none focus:ring-2 focus:ring-[#232946] mx-2">
-                <span className="inline-flex items-center gap-2">
-                  <FaGithub size={20} />
-                  Github
-                </span>
-              </a>
-            ) : (
-              <span className="py-2 px-5 border-2 border-[#232946] rounded-md bg-gray-500 text-white font-semibold shadow-md mx-2 opacity-60 cursor-not-allowed inline-flex items-center gap-2">
-                <FaGithub size={20} />
-                Código privado
-              </span>
-            )}
-            <a href={previewUrl} target="_blank" rel="noopener noreferrer" className="py-2 px-5 border-2 border-[#232946] rounded-md bg-gradient-to-r from-[#232946] to-[#5f6c7b] text-white font-semibold shadow-md transition-all duration-200 hover:scale-105 hover:from-[#5f6c7b] hover:to-[#232946] focus:outline-none focus:ring-2 focus:ring-[#232946] mx-2">
-              <span className="inline-flex items-center gap-2">
-                <PanelsTopLeft size={20} />
-                Deploy
-              </span>
+    <div className="group relative rounded-2xl overflow-hidden bg-[#111116] border border-white/5 shadow-lg hover:shadow-2xl transition-all duration-300">
+      <div className="relative overflow-hidden">
+        <img src={imgUrl} alt={titulo} className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-110" />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f13] via-transparent to-transparent opacity-80" />
+      </div>
+
+      <div className="p-5 flex flex-col justify-between min-h-[260px]">
+        <div>
+          <h5 className="text-xl font-semibold text-white mb-2">{titulo}</h5>
+
+          <p className="text-gray-400 text-sm leading-relaxed line-clamp-4">{descricao}</p>
+        </div>
+
+        <div className="flex gap-3 mt-6">
+          {gitUrl ? (
+            <a href={gitUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg bg-[#1a1a22] hover:bg-[#7f5af0] text-white transition-all duration-300 text-sm font-medium">
+              <FaGithub size={18} />
+              Código
             </a>
-          </div>
+          ) : (
+            <span className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg bg-gray-700 text-gray-300 text-sm opacity-60 cursor-not-allowed">
+              <FaGithub size={18} />
+              Privado
+            </span>
+          )}
+
+          {previewUrl ? (
+            <a href={previewUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg bg-[#7f5af0] hover:bg-[#6b4ae0] text-white transition-all duration-300 text-sm font-medium">
+              <PanelsTopLeft size={18} />
+              Deploy
+            </a>
+          ) : (
+            <span className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg bg-gray-700 text-gray-300 text-sm opacity-60 cursor-not-allowed">
+              <PanelsTopLeft size={18} />
+              Sem deploy
+            </span>
+          )}
         </div>
       </div>
     </div>
   );
-};
+}
