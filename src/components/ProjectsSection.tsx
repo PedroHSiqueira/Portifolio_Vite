@@ -11,8 +11,9 @@ const dadosProjetos = [
     descricao: "API backend com foco em performance utilizando Redis para cache, ranking em tempo real e rate limiting, desenvolvida com Java, Spring Boot e PostgreSQL.",
     imagem: "/projects/redis.jpg",
     tag: ["Todos", "Backend"],
-    gitUrl: "https://github.com/seu-repositorio-aqui",
+    gitUrl: "https://github.com/PedroHSiqueira/Redis_Cache_gaming",
     previewUrl: null,
+    techs: ["java", "spring", "postgres", "redis", "swagger", "docker"],
   },
   {
     id: 10,
@@ -20,8 +21,9 @@ const dadosProjetos = [
     descricao: "Sistema baseado em mensageria utilizando RabbitMQ para envio assíncrono de e-mails, com arquitetura Producer/Consumer e serviços desacoplados em Java + Spring Boot.",
     imagem: "/projects/rabbitmq.jpg",
     tag: ["Todos", "Backend"],
-    gitUrl: "https://github.com/seu-repositorio-aqui",
+    gitUrl: "https://github.com/PedroHSiqueira/RabbitMQ_Email_Sender",
     previewUrl: null,
+    techs: ["java", "spring", "rabbitmq", "swagger", "docker"],
   },
   {
     id: 11,
@@ -29,8 +31,9 @@ const dadosProjetos = [
     descricao: "API REST em Java + Spring Boot para gerenciamento de transações financeiras e cálculo de estatísticas em tempo real com base em uma janela deslizante de 60 segundos. Projeto feito para desafio Técnico para o banco Itaú.",
     imagem: "/projects/transacao.jpg",
     tag: ["Todos", "Backend"],
-    gitUrl: "https://github.com/seu-repositorio-aqui",
+    gitUrl: "https://github.com/PedroHSiqueira/Desafio_Spring_Itau",
     previewUrl: null,
+    techs: ["java", "spring", "swagger"],
   },
   {
     id: 7,
@@ -40,6 +43,7 @@ const dadosProjetos = [
     tag: ["Todos", "Web"],
     gitUrl: "https://github.com/PedroHSiqueira/Next_Verbalise_Frontend",
     previewUrl: "https://verbalize-senac.vercel.app/",
+    techs: ["next","typescript", "nodejs", "postgres"],
   },
   {
     id: 6,
@@ -49,6 +53,7 @@ const dadosProjetos = [
     tag: ["Todos", "Web"],
     gitUrl: "https://github.com/PedroHSiqueira/Vite_Site_Iemanja",
     previewUrl: "https://www.yalorixagenifferdeiemanja.com/",
+    techs: ["vitejs", "react", "typescript", "tailwind"],
   },
   {
     id: 5,
@@ -58,6 +63,7 @@ const dadosProjetos = [
     tag: ["Todos", "Web"],
     gitUrl: "https://github.com/PedroHSiqueira/Dashboard_Cambio_monetario",
     previewUrl: "https://dashboard-finance-one.vercel.app/",
+    techs: ["next", "typescript", "tailwind"],
   },
   {
     id: 1,
@@ -67,6 +73,7 @@ const dadosProjetos = [
     tag: ["Todos", "Backend"],
     gitUrl: "https://github.com/PedroHSiqueira/MagicFridgeAI_BJ",
     previewUrl: null,
+    techs: ["java", "spring", "docker"],
   },
   {
     id: 4,
@@ -76,6 +83,7 @@ const dadosProjetos = [
     tag: ["Todos", "Backend"],
     gitUrl: "https://github.com/PedroHSiqueira/FinanceControl_SB",
     previewUrl: null,
+    techs: ["java", "spring", "postgres"],
   },
   {
     id: 2,
@@ -85,6 +93,7 @@ const dadosProjetos = [
     tag: ["Todos", "Backend"],
     gitUrl: "https://github.com/PedroHSiqueira/PostGenerator_AI_SB",
     previewUrl: null,
+    techs: ["java", "spring"],
   },
   {
     id: 3,
@@ -94,6 +103,7 @@ const dadosProjetos = [
     tag: ["Todos", "Backend"],
     gitUrl: "https://github.com/PedroHSiqueira/Ollama_Chatbot",
     previewUrl: null,
+    techs: ["python"],
   },
 ];
 
@@ -133,6 +143,7 @@ export default function ProjetcSection() {
                   imgUrl: projeto.imagem,
                   gitUrl: projeto.gitUrl ?? "",
                   previewUrl: projeto.previewUrl,
+                  techs: projeto.techs,
                 }}
               />
             </div>
