@@ -36,6 +36,16 @@ const dadosProjetos = [
     techs: ["java", "spring", "swagger"],
   },
   {
+    id: 12,
+    titulo: "Vitrin ERP 📦",
+    descricao: "Sistema web para gestão de estoque voltado para pequenas empresas, permitindo controle de produtos, registro de vendas, baixa automática no estoque, pedidos a fornecedores e geração de relatórios. Projeto desenvolvido como TCC com foco em organização, performance e escalabilidade.",
+    imagem: "/projects/vitrin.jpg",
+    tag: ["Todos", "Web"],
+    gitUrl: "https://github.com/seu-repositorio-aqui",
+    previewUrl: "https://vitrin-six.vercel.app/",
+    techs: ["next", "react", "typescript", "fastfy", "tailwind", "postgres"],
+  },
+  {
     id: 7,
     titulo: "Verbalize 💬",
     descricao: "Plataforma web para intercâmbio linguístico que conecta pessoas interessadas em aprender novos idiomas, desenvolvida com Next.js e PostgreSQL.",
@@ -43,7 +53,7 @@ const dadosProjetos = [
     tag: ["Todos", "Web"],
     gitUrl: "https://github.com/PedroHSiqueira/Next_Verbalise_Frontend",
     previewUrl: "https://verbalize-senac.vercel.app/",
-    techs: ["next","typescript", "nodejs", "postgres"],
+    techs: ["next", "typescript", "tailwind", "nodejs", "postgres"],
   },
   {
     id: 6,

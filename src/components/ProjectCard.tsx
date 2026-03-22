@@ -27,6 +27,7 @@ const techIcons: Record<string, string> = {
   swagger: "/tecnologies/swagger.svg",
   nodejs: "/tecnologies/nodejs.svg",
   vitejs: "/tecnologies/vitejs.svg",
+  fastfy: "/tecnologies/fastify.svg",
 };
 
 export default function ProjectCard({ data }: { data: ProjectCardProps }) {
