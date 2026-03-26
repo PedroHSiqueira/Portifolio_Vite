@@ -28,6 +28,7 @@ const techIcons: Record<string, string> = {
   nodejs: "/tecnologies/nodejs.svg",
   vitejs: "/tecnologies/vitejs.svg",
   fastfy: "/tecnologies/fastify.svg",
+  junit: "/tecnologies/junit.svg",
 };
 
 export default function ProjectCard({ data }: { data: ProjectCardProps }) {

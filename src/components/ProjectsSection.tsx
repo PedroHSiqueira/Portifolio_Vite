@@ -13,7 +13,7 @@ const dadosProjetos = [
     tag: ["Todos", "Backend"],
     gitUrl: "https://github.com/PedroHSiqueira/Redis_Cache_gaming",
     previewUrl: null,
-    techs: ["java", "spring", "postgres", "redis", "swagger", "docker"],
+    techs: ["java", "spring", "postgres", "redis", "swagger", "docker", "junit"],
   },
   {
     id: 10,
@@ -23,7 +23,7 @@ const dadosProjetos = [
     tag: ["Todos", "Backend"],
     gitUrl: "https://github.com/PedroHSiqueira/RabbitMQ_Email_Sender",
     previewUrl: null,
-    techs: ["java", "spring", "rabbitmq", "swagger", "docker"],
+    techs: ["java", "spring", "rabbitmq", "swagger", "docker", "junit"],
   },
   {
     id: 11,
