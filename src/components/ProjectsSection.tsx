@@ -33,7 +33,7 @@ const dadosProjetos = [
     tag: ["Todos", "Backend"],
     gitUrl: "https://github.com/PedroHSiqueira/Desafio_Spring_Itau",
     previewUrl: null,
-    techs: ["java", "spring", "swagger"],
+    techs: ["java", "spring", "swagger", "junit"],
   },
   {
     id: 12,
