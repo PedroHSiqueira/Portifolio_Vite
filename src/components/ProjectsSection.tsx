@@ -33,7 +33,7 @@ const dadosProjetos = [
     tag: ["Todos", "Backend"],
     gitUrl: "https://github.com/PedroHSiqueira/Desafio_Spring_Itau",
     previewUrl: null,
-    techs: ["java", "spring", "swagger", "junit"],
+    techs: ["java", "spring", "swagger", "docker", "junit", "grafana", "prometheus"],
   },
   {
     id: 12,
@@ -135,7 +135,7 @@ export default function ProjetcSection() {
 
   return (
     <section id="projetos" className="bg-[#242629] pt-12 pb-16 px-4 sm:px-6 lg:px-16 scroll-mt-24">
-      <h2 className="mt-4 mb-8 text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#fffffe] md:mb-12">Meus Projetos 🚀</h2>
+      <h2 className="mt-4 mb-8 text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#fffffe] md:mb-12">Meus Projetos </h2>
       <div className="flex flex-wrap items-center justify-center gap-3 py-6 text-white">
         <ProjectTag onClick={handleTagChange} nome="Todos" selecionado={tag === "Todos"} />
         <ProjectTag onClick={handleTagChange} nome="Backend" selecionado={tag === "Backend"} />

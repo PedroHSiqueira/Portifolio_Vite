@@ -3,14 +3,14 @@ export function Tecnologies() {
     <section id="tecnologia" className="bg-[#18181d] pt-24 pb-16">
       <div className="max-w-6xl mx-auto px-6">
         <h1 className="text-center text-2xl sm:text-3xl font-bold text-white mb-10">
-          Tech Stack 🚀
+          Tech Stack 🖥️
         </h1>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8">
           {[
             { name: "Java", icon: "./tecnologies/java.svg" },
             { name: "Spring", icon: "./tecnologies/spring.svg" },
-            { name: "Maven", icon: "./tecnologies/maven.svg" },
+            { name: "Junit", icon: "./tecnologies/junit.svg" },
             { name: "Python", icon: "./tecnologies/python.svg" },
             { name: "Next.js", icon: "./tecnologies/next.svg" },
             { name: "Typescript", icon: "./tecnologies/typescript.svg" },
@@ -20,6 +20,8 @@ export function Tecnologies() {
             { name: "Redis", icon: "./tecnologies/redis.svg" },
             { name: "Swagger", icon: "./tecnologies/swagger.svg" },
             { name: "Docker", icon: "./tecnologies/docker.svg" },
+            { name: "Grafana", icon: "./tecnologies/grafana.svg" },
+            { name: "Prometheus", icon: "./tecnologies/prometheus.svg" },
           ].map((tech) => (
             <div
               key={tech.name}
