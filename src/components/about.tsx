@@ -47,12 +47,11 @@ export function About() {
       >
         <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wide">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#7f5af0]/10 border border-[#7f5af0]/20 text-[#7f5af0] dark:text-[#a78bfa] text-xs font-semibold tracking-wide">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#7f5af0]"></span>
             </span>
-            Disponível para novas oportunidades
+            Atuando na Osirnet
           </div>
 
           {/* Heading */}

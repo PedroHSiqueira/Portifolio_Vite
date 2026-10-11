@@ -30,7 +30,7 @@ export default function Contact() {
             Vamos construir algo juntos?
           </h2>
           <p className="text-slate-600 dark:text-gray-400 text-xs sm:text-sm md:text-base">
-            Estou disponível para novas oportunidades profissionais, desafios de engenharia backend e projetos colaborativos.
+            Aberto a networking, troca de conhecimentos em engenharia de software e projetos colaborativos.
           </p>
         </div>
 
