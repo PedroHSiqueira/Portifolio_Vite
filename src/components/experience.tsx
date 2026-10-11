@@ -22,7 +22,7 @@ const experiencias: Experiencia[] = [
   {
     id: 1,
     cargo: "Técnico de Suporte em TI",
-    empresa: "Osirnet",
+    empresa: "Osirnet Info Telecom",
     tipo: "Tempo integral",
     periodo: "set. de 2026 - o momento",
     duracao: "Atual",

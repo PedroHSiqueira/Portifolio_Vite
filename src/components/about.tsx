@@ -51,7 +51,7 @@ export function About() {
             <span className="relative flex h-2 w-2">
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#7f5af0]"></span>
             </span>
-            Atuando na Osirnet
+            Atuando na Osirnet Info Telecom
           </div>
 
           {/* Heading */}
