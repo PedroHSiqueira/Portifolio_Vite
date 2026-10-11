@@ -132,7 +132,7 @@ const dadosProjetos: ProjetoItem[] = [
     imgUrl: "/projects/iemanja.jpg",
     categoria: ["Todos", "Web"],
     gitUrl: "https://github.com/PedroHSiqueira/Vite_Site_Iemanja",
-    previewUrl: "https://www.yalorixagenifferdeiemanja.com/",
+    previewUrl: "https://vite-iemanja-build.vercel.app/",
     techs: ["vitejs", "react", "typescript", "tailwind"],
     badge: "Site Comercial",
   },
