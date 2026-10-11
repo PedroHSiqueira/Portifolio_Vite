@@ -1,39 +1,60 @@
-import { Code } from "lucide-react";
+import { Terminal, ArrowUp } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="bg-[#0f0f13] border-t border-white/5">
-      <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col items-center gap-6 text-center">
+    <footer className="bg-slate-100 dark:bg-[#09090d] border-t border-slate-200 dark:border-white/[0.06] py-10 sm:py-12 transition-colors">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+        {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 bg-gradient-to-br from-purple-600 to-purple-900 rounded-full flex items-center justify-center shadow-md">
-            <Code className="w-4 h-4 text-white" />
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#7f5af0] to-[#5b36d6] flex items-center justify-center shadow-md shadow-[#7f5af0]/20">
+            <Terminal className="w-4 h-4 text-white" />
           </div>
-          <span className="text-white font-semibold text-lg">
-            Pedro Siqueira <span className="text-[#7f5af0]">Dev</span>
+          <span className="text-sm font-semibold text-slate-900 dark:text-white">
+            Pedro Henrique <span className="text-[#7f5af0] font-mono text-xs">/ Backend Dev</span>
           </span>
         </div>
 
-        <div className="flex gap-5 text-gray-400">
-          <a href="https://github.com/PedroHSiqueira" target="_blank" className="hover:text-[#7f5af0] transition">
-            <FaGithub size={20} />
-          </a>
-          <a href="https://www.linkedin.com/in/phasiqueira/" target="_blank" className="hover:text-[#7f5af0] transition">
-            <FaLinkedin size={20} />
-          </a>
-        </div>
+        {/* Copyright */}
+        <p className="text-xs text-slate-600 dark:text-gray-400 text-center sm:text-left">
+          © {new Date().getFullYear()} Pedro Henrique Siqueira. Desenvolvido com foco em performance e boas práticas.
+        </p>
 
-        <div className="space-y-2">
-          <p className="text-gray-400 text-sm">© 2025 - 2026 Pedro Henrique Siqueira. Todos os direitos reservados.</p>
-
-          <p className="text-gray-500 text-xs">
-            Desenvolvido por{" "}
-            <a href="https://www.linkedin.com/in/phasiqueira/" target="_blank" className="hover:text-[#7f5af0] transition">
-              Pedro Siqueira
-            </a>
-          </p>
+        {/* Socials & Back to Top */}
+        <div className="flex items-center gap-3">
+          <a
+            href="https://github.com/PedroHSiqueira"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="p-2 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-200/60 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/[0.06] transition"
+          >
+            <FaGithub size={18} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/phasiqueira/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="p-2 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-200/60 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/[0.06] transition"
+          >
+            <FaLinkedin size={18} />
+          </a>
+          <button
+            onClick={scrollToTop}
+            aria-label="Voltar ao topo"
+            className="p-2 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-200/60 dark:text-gray-400 dark:hover:text-white dark:hover:bg-white/[0.06] transition cursor-pointer"
+            title="Voltar ao topo"
+          >
+            <ArrowUp size={18} />
+          </button>
         </div>
       </div>
     </footer>
   );
 }
+

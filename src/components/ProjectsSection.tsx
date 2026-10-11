@@ -1,165 +1,208 @@
 "use client";
-import { useState, useRef, type SetStateAction } from "react";
-import ProjectCard from "./ProjectCard";
-import ProjectTag from "./ProjectTag";
-import { motion, useInView } from "framer-motion";
 
-const dadosProjetos = [
+import { useState } from "react";
+import ProjectCard, { type ProjectCardData } from "./ProjectCard";
+import ProjectTag from "./ProjectTag";
+import { motion, AnimatePresence } from "framer-motion";
+import { FolderGit2 } from "lucide-react";
+
+interface ProjetoItem extends ProjectCardData {
+  id: number;
+  categoria: string[];
+}
+
+const dadosProjetos: ProjetoItem[] = [
   {
     id: 9,
-    titulo: "Redis Gaming API ⚡",
-    descricao: "API backend com foco em performance utilizando Redis para cache, ranking em tempo real e rate limiting, desenvolvida com Java, Spring Boot e PostgreSQL.",
-    imagem: "/projects/redis.jpg",
-    tag: ["Todos", "Backend"],
+    titulo: "Redis Gaming API",
+    descricao: "API de alta performance focada em cache inteligente, ranking em tempo real com Sorted Sets e controle de taxa (rate limiting) para aplicações de jogos.",
+    imgUrl: "/projects/redis.jpg",
+    categoria: ["Todos", "Backend"],
     gitUrl: "https://github.com/PedroHSiqueira/Redis_Cache_gaming",
     previewUrl: null,
     techs: ["java", "spring", "postgres", "redis", "swagger", "docker", "junit"],
+    badge: "Cache & Performance",
+    featured: true,
   },
   {
     id: 10,
-    titulo: "RabbitMQ Email Sender 📩",
-    descricao: "Sistema baseado em mensageria utilizando RabbitMQ para envio assíncrono de e-mails, com arquitetura Producer/Consumer e serviços desacoplados em Java + Spring Boot.",
-    imagem: "/projects/rabbitmq.jpg",
-    tag: ["Todos", "Backend"],
+    titulo: "RabbitMQ Email Sender",
+    descricao: "Sistema de mensageria assíncrona baseado no padrão Producer/Consumer. Desacopla o envio de notificações e e-mails com reprocessamento e resiliência.",
+    imgUrl: "/projects/rabbitmq.jpg",
+    categoria: ["Todos", "Backend"],
     gitUrl: "https://github.com/PedroHSiqueira/RabbitMQ_Email_Sender",
     previewUrl: null,
     techs: ["java", "spring", "rabbitmq", "swagger", "docker", "junit"],
+    badge: "Mensageria Assíncrona",
+    featured: true,
   },
   {
     id: 11,
-    titulo: "Transaction Stats API 📊",
-    descricao: "API REST em Java + Spring Boot para gerenciamento de transações financeiras e cálculo de estatísticas em tempo real com base em uma janela deslizante de 60 segundos. Projeto feito para desafio Técnico para o banco Itaú.",
-    imagem: "/projects/transacao.jpg",
-    tag: ["Todos", "Backend"],
+    titulo: "Transaction Stats API (Itaú)",
+    descricao: "API financeira de alta precisão para cálculo de estatísticas em tempo real com janela deslizante de 60 segundos, telemetria Prometheus e dashboards Grafana.",
+    imgUrl: "/projects/transacao.jpg",
+    categoria: ["Todos", "Backend"],
     gitUrl: "https://github.com/PedroHSiqueira/Desafio_Spring_Itau",
     previewUrl: null,
     techs: ["java", "spring", "swagger", "docker", "junit", "grafana", "prometheus"],
+    badge: "Desafio Itaú",
+    featured: true,
   },
   {
     id: 12,
-    titulo: "Vitrin ERP 📦",
-    descricao: "Sistema web para gestão de estoque voltado para pequenas empresas, permitindo controle de produtos, registro de vendas, baixa automática no estoque, pedidos a fornecedores e geração de relatórios. Projeto desenvolvido como TCC com foco em organização, performance e escalabilidade.",
-    imagem: "/projects/vitrin.jpg",
-    tag: ["Todos", "Web"],
-    gitUrl: "https://github.com/seu-repositorio-aqui",
+    titulo: "Vitrin ERP",
+    descricao: "Sistema de gestão de estoque e vendas para PMEs. Controle de produtos, baixa automática de estoque, ordens a fornecedores e emissão de relatórios.",
+    imgUrl: "/projects/vitrin.jpg",
+    categoria: ["Todos", "Web"],
+    gitUrl: "",
     previewUrl: "https://vitrin-six.vercel.app/",
     techs: ["next", "react", "typescript", "fastfy", "tailwind", "postgres"],
+    badge: "TCC / Gestão",
   },
   {
     id: 7,
-    titulo: "Verbalize 💬",
-    descricao: "Plataforma web para intercâmbio linguístico que conecta pessoas interessadas em aprender novos idiomas, desenvolvida com Next.js e PostgreSQL.",
-    imagem: "/projects/Verbalize.png",
-    tag: ["Todos", "Web"],
+    titulo: "Verbalize",
+    descricao: "Plataforma de intercâmbio linguístico que conecta estudantes e entusiastas para prática de conversação com backend seguro e interface moderna.",
+    imgUrl: "/projects/Verbalize.png",
+    categoria: ["Todos", "Web"],
     gitUrl: "https://github.com/PedroHSiqueira/Next_Verbalise_Frontend",
     previewUrl: "https://verbalize-senac.vercel.app/",
     techs: ["next", "typescript", "tailwind", "nodejs", "postgres"],
-  },
-  {
-    id: 6,
-    titulo: "Reino de Yemanjá Bocci 🏖️",
-    descricao: "Site institucional desenvolvido em React e Tailwind CSS para uma casa religiosa, com foco em responsividade, apresentação de serviços e agendamento de consultas.",
-    imagem: "/projects/iemanja.jpg",
-    tag: ["Todos", "Web"],
-    gitUrl: "https://github.com/PedroHSiqueira/Vite_Site_Iemanja",
-    previewUrl: "https://www.yalorixagenifferdeiemanja.com/",
-    techs: ["vitejs", "react", "typescript", "tailwind"],
-  },
-  {
-    id: 5,
-    titulo: "Finance Dashboard 💰",
-    descricao: "Dashboard web desenvolvido com Next.js que exibe cotações de moedas em tempo real, consumindo a API da AwesomeAPI para dados atualizados.",
-    imagem: "/projects/finance.png",
-    tag: ["Todos", "Web"],
-    gitUrl: "https://github.com/PedroHSiqueira/Dashboard_Cambio_monetario",
-    previewUrl: "https://dashboard-finance-one.vercel.app/",
-    techs: ["next", "typescript", "tailwind"],
+    badge: "Plataforma Web",
   },
   {
     id: 1,
     titulo: "MagicFridge AI",
-    descricao: "Aplicação que sugere receitas automaticamente com base nos alimentos disponíveis, utilizando IA (ChatGPT e Gemini) e backend em Java com Spring Boot.",
-    imagem: "/projects/receitas.jpg",
-    tag: ["Todos", "Backend"],
+    descricao: "Microsserviço de culinária inteligente que sugere receitas otimizadas com base nos ingredientes do usuário, integrando Java, Spring e Google Gemini.",
+    imgUrl: "/projects/receitas.jpg",
+    categoria: ["Todos", "Backend", "IA"],
     gitUrl: "https://github.com/PedroHSiqueira/MagicFridgeAI_BJ",
     previewUrl: null,
     techs: ["java", "spring", "docker"],
+    badge: "IA Generativa",
   },
   {
     id: 4,
-    titulo: "Finance API 💰",
-    descricao: "API REST para gestão financeira com autenticação via JWT, controle de usuários e integração com banco de dados relacional, focada em segurança e escalabilidade.",
-    imagem: "/projects/finance.jpg",
-    tag: ["Todos", "Backend"],
+    titulo: "Finance Control API",
+    descricao: "API RESTful para controle financeiro pessoal com autenticação JWT, gestão de categorias de despesas e modelagem relacional em PostgreSQL.",
+    imgUrl: "/projects/finance.jpg",
+    categoria: ["Todos", "Backend"],
     gitUrl: "https://github.com/PedroHSiqueira/FinanceControl_SB",
     previewUrl: null,
     techs: ["java", "spring", "postgres"],
+    badge: "Finanças & JWT",
   },
   {
     id: 2,
-    titulo: "Posts Generator [Gemini AI]",
-    descricao: "API em Java + Spring Boot integrada ao Google Gemini para geração automática de textos e resumos, ideal para criação de conteúdos para redes sociais e blogs.",
-    imagem: "/projects/postAi.jpg",
-    tag: ["Todos", "Backend"],
+    titulo: "Posts Generator AI",
+    descricao: "API em Spring Boot integrada ao Google Gemini para automação e geração ágil de posts e resumos técnicos para mídias sociais e blogs.",
+    imgUrl: "/projects/postAi.jpg",
+    categoria: ["Todos", "Backend", "IA"],
     gitUrl: "https://github.com/PedroHSiqueira/PostGenerator_AI_SB",
     previewUrl: null,
     techs: ["java", "spring"],
+    badge: "Gemini AI",
   },
   {
     id: 3,
-    titulo: "Chatbot Ollama 🤖",
-    descricao: "Chatbot desenvolvido em Python utilizando a LLM Llama3 via Ollama, capaz de responder perguntas e simular conversas em linguagem natural.",
-    imagem: "/projects/chatbot.png",
-    tag: ["Todos", "Backend"],
+    titulo: "Chatbot Ollama LLM",
+    descricao: "Agente conversacional local em Python utilizando o modelo Llama 3 via Ollama, executando inferência offline sem dependência de APIs externas.",
+    imgUrl: "/projects/chatbot.png",
+    categoria: ["Todos", "Backend", "IA"],
     gitUrl: "https://github.com/PedroHSiqueira/Ollama_Chatbot",
     previewUrl: null,
     techs: ["python"],
+    badge: "LLM Local",
+  },
+  {
+    id: 5,
+    titulo: "Finance Dashboard",
+    descricao: "Dashboard interativo em Next.js para visualização e análise de taxas de câmbio em tempo real, consumindo dados ao vivo da AwesomeAPI.",
+    imgUrl: "/projects/finance.png",
+    categoria: ["Todos", "Web"],
+    gitUrl: "https://github.com/PedroHSiqueira/Dashboard_Cambio_monetario",
+    previewUrl: "https://dashboard-finance-one.vercel.app/",
+    techs: ["next", "typescript", "tailwind"],
+    badge: "Tempo Real",
+  },
+  {
+    id: 6,
+    titulo: "Reino de Yemanjá Bocci",
+    descricao: "Website institucional responsivo com foco em apresentação de serviços, agendamentos online e identidade visual moderna em React e Tailwind.",
+    imgUrl: "/projects/iemanja.jpg",
+    categoria: ["Todos", "Web"],
+    gitUrl: "https://github.com/PedroHSiqueira/Vite_Site_Iemanja",
+    previewUrl: "https://www.yalorixagenifferdeiemanja.com/",
+    techs: ["vitejs", "react", "typescript", "tailwind"],
+    badge: "Site Comercial",
   },
 ];
 
 export default function ProjetcSection() {
   const [tag, setTag] = useState("Todos");
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
 
-  const handleTagChange = (novaTag: SetStateAction<string>) => {
-    setTag(novaTag);
-  };
+  const tags = [
+    { nome: "Todos", count: dadosProjetos.length },
+    { nome: "Backend", count: dadosProjetos.filter((p) => p.categoria.includes("Backend")).length },
+    { nome: "Web", count: dadosProjetos.filter((p) => p.categoria.includes("Web")).length },
+    { nome: "IA", count: dadosProjetos.filter((p) => p.categoria.includes("IA")).length },
+  ];
 
-  const projetosFiltrados = dadosProjetos.filter((projeto) => projeto.tag.includes(tag));
-
-  const cardVariants = {
-    initial: { y: 50, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-  };
+  const projetosFiltrados = dadosProjetos.filter((projeto) => projeto.categoria.includes(tag));
 
   return (
-    <section id="projetos" className="bg-[#242629] pt-12 pb-16 px-4 sm:px-6 lg:px-16 scroll-mt-24">
-      <h2 className="mt-4 mb-8 text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#fffffe] md:mb-12">Meus Projetos </h2>
-      <div className="flex flex-wrap items-center justify-center gap-3 py-6 text-white">
-        <ProjectTag onClick={handleTagChange} nome="Todos" selecionado={tag === "Todos"} />
-        <ProjectTag onClick={handleTagChange} nome="Backend" selecionado={tag === "Backend"} />
-        <ProjectTag onClick={handleTagChange} nome="Web" selecionado={tag === "Web"} />
-      </div>
+    <section id="projetos" className="relative py-16 sm:py-24 bg-slate-50 dark:bg-[#0a0b10] border-t border-slate-200 dark:border-white/[0.06] transition-colors scroll-mt-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 space-y-2 sm:space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#7f5af0]/10 border border-[#7f5af0]/20 text-[#7f5af0] text-xs font-semibold uppercase tracking-wider">
+            <FolderGit2 size={13} />
+            <span>Portfólio de Código</span>
+          </div>
 
-      <ul ref={ref} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {projetosFiltrados.map((projeto, index) => (
-          <motion.li key={projeto.id} variants={cardVariants} initial="initial" animate={isInView ? "animate" : "initial"} transition={{ duration: 0.3, delay: index * 0.1 }} className="h-full">
-            <div className="flex flex-col h-full">
-              <ProjectCard
-                data={{
-                  titulo: projeto.titulo,
-                  descricao: projeto.descricao,
-                  imgUrl: projeto.imagem,
-                  gitUrl: projeto.gitUrl ?? "",
-                  previewUrl: projeto.previewUrl,
-                  techs: projeto.techs,
-                }}
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Projetos Selecionados
+          </h2>
+
+          <p className="text-slate-600 dark:text-gray-400 text-xs sm:text-sm md:text-base">
+            Aplicações focadas em arquitetura sólida, mensageria assíncrona, microsserviços e sistemas web completos.
+          </p>
+        </div>
+
+        {/* Filter Pills */}
+        <div className="flex items-center gap-2 mb-8 sm:mb-12 overflow-x-auto pb-2 sm:pb-0 sm:flex-wrap sm:justify-center px-1 no-scrollbar">
+          {tags.map((t) => (
+            <div key={t.nome} className="shrink-0 sm:shrink">
+              <ProjectTag
+                nome={t.nome}
+                count={t.count}
+                selecionado={tag === t.nome}
+                onClick={(novoNome) => setTag(novoNome)}
               />
             </div>
-          </motion.li>
-        ))}
-      </ul>
+          ))}
+        </div>
+
+        {/* Grid with animations */}
+        <motion.div layout className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <AnimatePresence>
+            {projetosFiltrados.map((projeto) => (
+              <motion.div
+                layout
+                key={projeto.id}
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.25 }}
+                className="h-full"
+              >
+                <ProjectCard data={projeto} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </div>
     </section>
   );
 }
+
