@@ -15,27 +15,22 @@ const technologies: TechItem[] = [
   // Backend
   { name: "Java", category: "backend", icon: "./tecnologies/java.svg", description: "Linguagem Principal & Concorrência" },
   { name: "Spring Boot", category: "backend", icon: "./tecnologies/spring.svg", description: "APIs REST, Security & Data JPA" },
-  { name: "JUnit 5", category: "backend", icon: "./tecnologies/junit.svg", description: "Testes Unitários & Integração" },
   { name: "Python", category: "backend", icon: "./tecnologies/python.svg", description: "Scripts & Integrações com IA" },
   { name: "Node.js", category: "backend", icon: "./tecnologies/nodejs.svg", description: "APIs assíncronas & microsserviços" },
-  { name: "Fastify", category: "backend", icon: "./tecnologies/fastify.svg", description: "Alta performance HTTP em Node" },
 
   // Dados & Mensageria
   { name: "PostgreSQL", category: "data", icon: "./tecnologies/postgresql.svg", description: "Banco de dados relacional principal" },
-  { name: "MySQL", category: "data", icon: "./tecnologies/mysql.svg", description: "Modelagem e persistência relacional" },
   { name: "Redis", category: "data", icon: "./tecnologies/redis.svg", description: "Cache de baixa latência e Rate Limiting" },
   { name: "RabbitMQ", category: "data", icon: "./tecnologies/rabbitmq.svg", description: "Mensageria e filas assíncronas" },
 
   // DevOps & Observabilidade
   { name: "Docker", category: "devops", icon: "./tecnologies/docker.svg", description: "Conteinerização de ambientes" },
-  { name: "Swagger / OpenAPI", category: "devops", icon: "./tecnologies/swagger.svg", description: "Documentação interativa de APIs" },
   { name: "Prometheus", category: "devops", icon: "./tecnologies/prometheus.svg", description: "Coleta de métricas e monitoramento" },
   { name: "Grafana", category: "devops", icon: "./tecnologies/grafana.svg", description: "Dashboards visuais de telemetria" },
   { name: "Git & GitHub", category: "devops", icon: "./tecnologies/github.svg", description: "Versionamento e CI/CD" },
 
   // Frontend & Outros
   { name: "TypeScript", category: "frontend", icon: "./tecnologies/typescript.svg", description: "Tipagem estática e segurança de tipos" },
-  { name: "JavaScript", category: "frontend", icon: "./tecnologies/javascript.svg", description: "Desenvolvimento web moderno" },
   { name: "React", category: "frontend", icon: "./tecnologies/react.svg", description: "Interfaces reativas e modulares" },
   { name: "Next.js", category: "frontend", icon: "./tecnologies/next.svg", description: "Aplicações SSR e fullstack web" },
   { name: "Tailwind CSS", category: "frontend", icon: "./tecnologies/tailwind.svg", description: "Estilização utilitária e ágil" },
@@ -131,4 +126,4 @@ export function Tecnologies() {
       </div>
     </section>
   );
-}
+}
