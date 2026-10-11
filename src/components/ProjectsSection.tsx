@@ -78,7 +78,7 @@ const dadosProjetos: ProjetoItem[] = [
     categoria: ["Todos", "Backend", "IA"],
     gitUrl: "https://github.com/PedroHSiqueira/MagicFridgeAI_BJ",
     previewUrl: null,
-    techs: ["java", "spring", "docker"],
+    techs: ["gemini", "java", "spring", "docker"],
     badge: "IA Generativa",
   },
   {
@@ -93,14 +93,14 @@ const dadosProjetos: ProjetoItem[] = [
     badge: "Finanças & JWT",
   },
   {
-    id:8,
+    id: 8,
     titulo: "Posts Generator AI",
     descricao: "API em Spring Boot integrada ao Google Gemini para automação e geração ágil de posts e resumos técnicos para mídias sociais e blogs.",
     imgUrl: "/projects/postAi.jpg",
     categoria: ["Todos", "Backend", "IA"],
     gitUrl: "https://github.com/PedroHSiqueira/PostGenerator_AI_SB",
     previewUrl: null,
-    techs: ["java", "spring"],
+    techs: ["gemini", "java", "spring"],
     badge: "Gemini AI",
   },
   {
@@ -111,7 +111,7 @@ const dadosProjetos: ProjetoItem[] = [
     categoria: ["Todos", "Backend", "IA"],
     gitUrl: "https://github.com/PedroHSiqueira/Ollama_Chatbot",
     previewUrl: null,
-    techs: ["python"],
+    techs: ["ollama", "python"],
     badge: "LLM Local",
   },
   {

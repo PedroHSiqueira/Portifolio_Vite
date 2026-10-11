@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import { SiGooglegemini, SiOllama } from "react-icons/si";
 
 export interface ProjectCardData {
   id?: number;
@@ -33,6 +34,17 @@ const techIcons: Record<string, string> = {
   junit: "/tecnologies/junit.svg",
   grafana: "/tecnologies/grafana.svg",
   prometheus: "/tecnologies/prometheus.svg",
+};
+
+const aiIcons: Record<string, { icon: React.ReactNode; label: string }> = {
+  gemini: {
+    icon: <SiGooglegemini className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#1a73e8] dark:text-[#4285f4]" />,
+    label: "Gemini",
+  },
+  ollama: {
+    icon: <SiOllama className="w-3 sm:w-3.5 h-3 sm:h-3.5" />,
+    label: "Ollama",
+  },
 };
 
 export default function ProjectCard({ data }: { data: ProjectCardData }) {
@@ -82,22 +94,30 @@ export default function ProjectCard({ data }: { data: ProjectCardData }) {
           {/* Tech Badges */}
           {techs && techs.length > 0 && (
             <div className="flex flex-wrap gap-1.5 pt-1.5">
-              {techs.map((tech) => (
-                <div
-                  key={tech}
-                  className="flex items-center gap-1 px-2 py-0.5 sm:py-1 rounded-md bg-slate-100 dark:bg-[#181a28] border border-slate-200/80 dark:border-white/[0.04] text-[10px] sm:text-[11px] text-slate-700 dark:text-gray-300"
-                  title={tech}
-                >
-                  {techIcons[tech] ? (
-                    <img
-                      src={techIcons[tech]}
-                      alt={tech}
-                      className="w-3 sm:w-3.5 h-3 sm:h-3.5 object-contain"
-                    />
-                  ) : null}
-                  <span className="capitalize">{tech === "fastfy" ? "Fastify" : tech}</span>
-                </div>
-              ))}
+              {techs.map((tech) => {
+                const ai = aiIcons[tech.toLowerCase()];
+
+                return (
+                  <div
+                    key={tech}
+                    className="flex items-center gap-1 px-2 py-0.5 sm:py-1 rounded-md bg-slate-100 dark:bg-[#181a28] border border-slate-200/80 dark:border-white/[0.04] text-[10px] sm:text-[11px] text-slate-700 dark:text-gray-300"
+                    title={ai ? ai.label : tech}
+                  >
+                    {ai ? (
+                      ai.icon
+                    ) : techIcons[tech] ? (
+                      <img
+                        src={techIcons[tech]}
+                        alt={tech}
+                        className="w-3 sm:w-3.5 h-3 sm:h-3.5 object-contain"
+                      />
+                    ) : null}
+                    <span className="capitalize">
+                      {ai ? ai.label : tech === "fastfy" ? "Fastify" : tech}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>
