@@ -21,7 +21,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <p className="text-xs text-slate-600 dark:text-gray-400 text-center sm:text-left">
-          © {new Date().getFullYear()} Pedro Henrique Siqueira. Desenvolvido com foco em performance e boas práticas.
+          © {new Date().getFullYear()} Pedro Henrique Siqueira.
         </p>
 
         {/* Socials & Back to Top */}
